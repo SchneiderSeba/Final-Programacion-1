@@ -5,10 +5,12 @@ import Agent from './Agents.js';
 const agents = [
     new Agent("Sebastian"),
     new Agent("Nahuel"),
+    new Agent("Flaco")
 ];
 
 const Sebastian = agents[0];
 const Nahuel = agents[1];
+const Flaco = agents[2];
 
 async function main() {
     if (callsPending.length > 1) {
@@ -21,6 +23,10 @@ async function main() {
 
             if (callsPending.length > 0) {
                 await Nahuel.handleCall(callsPending);
+                console.log('─'.repeat(50));
+            }
+            if (callsPending.length > 0) {
+                await Flaco.handleCall(callsPending);
                 console.log('─'.repeat(50));
             }
         }
@@ -41,6 +47,10 @@ async function main() {
 
     console.log("Nahuel's handled calls:", Nahuel.callsDone);
     console.log("Nahuel's handled calls count:", Nahuel.callsHandled);
+
+    console.log("Flaco's handled calls:", Flaco.callsDone);
+    console.log("Flaco's handled calls count:", Flaco.callsHandled);
+    console.log("Total calls handled:", Sebastian.callsHandled + Nahuel.callsHandled + Flaco.callsHandled);
 }
 
 main().catch(console.error);
